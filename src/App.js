@@ -1,10 +1,16 @@
-import './App.css';
+import React from 'react';
+
+//Pages
+import Main from './pages/Main';
+
+// Router
+import { Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Poke App</h1>
-    </div>
+    <Main>
+      <Route exact path="/" component={Main} />
+    </Main>
   );
 }
 
