@@ -1,9 +1,15 @@
-import Card from "../components/Card";
+// import Card from "../components/Card";
+import Modal from "../components/Modal";
 
 import { useEffect, useState } from "react";
 
 const Main = () => {
     const [pokemons, setPokemon] = useState([]);
+    const [modal, setModal] = useState(false);
+
+    const toggleModal = () => {
+        setModal(!modal)
+    }
 
     useEffect(() => {
         fetch("https://pokeapi.co/api/v2/pokemon/")
@@ -16,10 +22,13 @@ const Main = () => {
     }, [])
 
     return (
-        <div>
-            {pokemons.map((pokemon, index) => {
-                return <Card key={index} pokemon={pokemon} />
-            })}
+        <div className="container">
+            <ol>
+                {pokemons.map((pokemon, index) => {
+                    return <li onClick={toggleModal} key={index}><Modal />{pokemon}</li>
+                })}
+            </ol>
+
         </div>
     )
 }
